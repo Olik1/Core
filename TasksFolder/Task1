@@ -1,1 +1,84 @@
+public static int generateRandomNumber(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n must not be negative");
+        }
 
+        return ThreadLocalRandom.current().nextInt(0, n + 1);
+    }
+    public static int[][] fillArrayNumber(int [][] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = generateRandomNumber(30);
+            }
+        } return array;
+    }
+
+    public static void doubleBubble(int[][] matrix){
+
+        for ( int i = 0; i < matrix.length * matrix[0].length - 1; ++i ) {
+            for ( int j = i + 1; j < matrix.length * matrix[0].length; ++j ) {
+                if ( matrix[j / matrix[0].length][j % matrix[0].length] < matrix[i / matrix[0].length][i % matrix[0].length] ) {
+                    int tmp = matrix[j / matrix[0].length][j % matrix[0].length];
+                    matrix[j / matrix[0].length][j % matrix[0].length] = matrix[i / matrix[0].length][i % matrix[0].length];
+                    matrix[i / matrix[0].length][i % matrix[0].length] = tmp;
+                }
+            }
+        }
+    }
+    public static int maxElement(int[][] matrix){
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if(matrix[i][j]>max){
+                    max = matrix[i][j];
+                }
+            }
+        }
+        return max;
+    }
+    public static int minElement(int[][] matrix){
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if(matrix[i][j]<min){
+                    min = matrix[i][j];
+                }
+            }
+        }
+        return min;
+    }
+    public static int averageValue(int [][] matrix){
+        int sum = 0;
+        int indexCounter = 0;
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = 0; j < matrix[i].length; j++) {
+                sum+= matrix[i][j];
+                indexCounter++;
+            }
+        }
+        int average = sum / (matrix.length * matrix[0].length);
+        return average;
+    }
+    public static void printArr(int[][] arr){
+        //Вывод значений матрицы
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        //Заполнение массива случайными числами
+        int[][] myArr = new int[5][5];
+        fillArrayNumber(myArr);
+        System.out.println("Неотсортированная матрица:");
+        printArr(myArr);
+        doubleBubble(myArr);
+        System.out.println("Отсортированная матрица:");
+        printArr(myArr);
+        System.out.println("Максимальное значение: " + maxElement(myArr));
+        System.out.println("Минимальное значение: " + minElement(myArr));
+        System.out.println("Среднее значение: " + averageValue(myArr));
+    }

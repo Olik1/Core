@@ -60,7 +60,6 @@ public static int generateRandomNumber(int n) {
         return average;
     }
     public static void printArr(int[][] arr){
-        //Вывод значений матрицы
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
                 System.out.print(arr[i][j] + "\t");
@@ -70,7 +69,7 @@ public static int generateRandomNumber(int n) {
     }
 
     public static void main(String[] args) {
-        //Заполнение массива случайными числами
+    
         int[][] myArr = new int[5][5];
         fillArrayNumber(myArr);
         System.out.println("Неотсортированная матрица:");

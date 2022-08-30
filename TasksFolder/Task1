@@ -69,7 +69,7 @@ public static int generateRandomNumber(int n) {
     }
 
     public static void main(String[] args) {
-    
+        //
         int[][] myArr = new int[5][5];
         fillArrayNumber(myArr);
         System.out.println("Неотсортированная матрица:");
